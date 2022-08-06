@@ -1,6 +1,6 @@
 package com.violet.springboot.web;
 
-import com.violet.springboot.service.posts.PostsService;
+import com.violet.springboot.service.PostsService;
 import com.violet.springboot.web.dto.PostsResponseDto;
 import com.violet.springboot.web.dto.PostsSaveRequestDto;
 import com.violet.springboot.web.dto.PostsUpdateRequestDto;
@@ -23,8 +23,15 @@ public class PostsApiController {
         return postsService.update(id, requestDto);
     }
 
+    @DeleteMapping("/api/v1/posts/{id}")
+    public Long delete(@PathVariable Long id) {
+        postsService.delete(id);
+        return id;
+    }
+
     @GetMapping("/api/v1/posts/{id}")
     public PostsResponseDto findById (@PathVariable Long id) {
         return postsService.findById(id);
     }
+
 }

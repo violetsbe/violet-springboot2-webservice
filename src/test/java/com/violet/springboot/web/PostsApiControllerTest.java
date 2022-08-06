@@ -1,7 +1,7 @@
 package com.violet.springboot.web;
 
 import com.violet.springboot.domain.posts.Posts;
-import com.violet.springboot.domain.posts.PostsReposirory;
+import com.violet.springboot.domain.posts.PostsRepository;
 import com.violet.springboot.web.dto.PostsSaveRequestDto;
 import com.violet.springboot.web.dto.PostsUpdateRequestDto;
 import org.junit.jupiter.api.AfterEach;
@@ -20,9 +20,10 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 @ExtendWith(SpringExtension.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = RANDOM_PORT)
 public class PostsApiControllerTest {
 
     @LocalServerPort
@@ -32,7 +33,7 @@ public class PostsApiControllerTest {
     private TestRestTemplate restTemplate;
 
     @Autowired
-    private PostsReposirory postsReposirory;
+    private PostsRepository postsReposirory;
 
     @AfterEach
     public void tearDown() throws Exception {
